@@ -6,7 +6,47 @@
 2. Создайте свой собственный (или используйте старый) публичный репозиторий на github с произвольным именем.
 3. Скачайте [playbook](./playbook/) из репозитория с домашним заданием и перенесите его в свой репозиторий. 
 4. Подготовьте хосты в соответствии с группами из предподготовленного playbook.
-
+Пытаюсь запустить плэйбук на докер контейнере
+![img.png](img.png)
+```shell
+- name: Install Clickhouse
+  hosts: clickhouse
+  handlers:
+    - name: Start clickhouse service
+      become: true
+      ansible.builtin.service:
+        name: clickhouse-server
+        state: restarted
+  tasks:
+    - block:
+        - name: Get clickhouse distrib
+          ansible.builtin.get_url:
+            url: "https://packages.clickhouse.com/rpm/stable/{{ item }}-{{ clickhouse_version }}.noarch.rpm"
+            dest: "./{{ item }}-{{ clickhouse_version }}.rpm"
+          with_items: "{{ clickhouse_packages }}"
+      rescue:
+        - name: Get clickhouse distrib
+          ansible.builtin.get_url:
+            url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
+            dest: "./clickhouse-common-static-{{ clickhouse_version }}.rpm"
+    - name: GPG
+      become: true
+      ansible.builtin.yum:
+      disable_gpg_check: "{{ disable_yum_gpg_check | d(omit) }}"
+    - name: Install clickhouse packages
+      become: true
+      become_method: su
+      ansible.builtin.yum:
+        name:
+          - clickhouse-common-static-{{ clickhouse_version }}.rpm
+          - clickhouse-client-{{ clickhouse_version }}.rpm
+          - clickhouse-server-{{ clickhouse_version }}.rpm
+```
+Так у меня не запускается плэйбук, ошибка синтаксиса
+Я отключала вручную в докер контейнере gpg_check=0, но это не помогло
+Я попробовала поднять виртуалку на центосе также в вагрант и она также на локалхосте и подключиться к ней по ssh не получается, вместо этого он мне на убунту грузит кликхаус.
+Я пробовала через wmvare запустить виртуалку, но там тоже ничего не получается.
+В общем помогите мне, пожалуйста. 
 ## Основная часть
 
 1. Приготовьте свой собственный inventory файл `prod.yml`.

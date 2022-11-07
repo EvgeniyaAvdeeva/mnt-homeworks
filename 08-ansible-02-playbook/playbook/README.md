@@ -4,17 +4,13 @@ GROUP VARS
 
 clickhouse - имя пакета установки clickhouse
 
-vector - имя пакета установки vector
-
-vector_home - переменная домашнего каталога для vector
-
-vector_version - версия vector 
-
 clickhouse_version - версия clickhouse
 
-clickhouse-client - переменная для скачивания и установки компонента 
+clickhouse-client - переменная для скачивания и установки компонента clickhouse 
 
-clickhouse clickhouse-server - переменная для скачивания и установки компонента clickhouse clickhouse-common-static - переменная для скачивания и установки компонента clickhouse
+clickhouse-server - переменная для скачивания и установки компонента clickhouse 
+
+clickhouse-common-static - переменная для скачивания и установки компонента clickhouse
 
 ## Описание Play
 
@@ -22,10 +18,10 @@ Install clickhouse
 
 Install vector
 
-установлены тэги vector для дальнейшего использования и отладки
+установлены тэг vector для дальнейшего использования и отладки
 
-загрузка установочного пакета
+создание директории /vect
 
-создание рабочего каталога
+загрузка установочного пакета .rpm в созданную директорию
 
-распаковка в рабочий каталог из пакета
+установка vector в директорию /vect

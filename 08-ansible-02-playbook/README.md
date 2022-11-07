@@ -29,6 +29,7 @@ https://github.com/EvgeniyaAvdeeva/mnt-homeworks/blob/main/08-ansible-02-playboo
 10. Готовый playbook выложите в свой репозиторий, поставьте тег `08-ansible-02-playbook` на фиксирующий коммит, в ответ предоставьте ссылку на него.
 
 https://github.com/EvgeniyaAvdeeva/mnt-homeworks/tree/main/08-ansible-02-playbook/playbook/playbook
+
 ---
 
 ### Как оформить ДЗ?

@@ -7,32 +7,9 @@
 
 Ссылка на репозиторий LightHouse: https://github.com/VKCOM/lighthouse
 
-У меня проблема еще на этапе установки Вектора, хотя в докере все работало. Файл скачивается, но ansible его не видит
-![img.png](img.png)
+![img_2.png](img_2.png)
+`
 
-
-```shell
-- name: Install Vector
-  hosts: vector
-  tasks:
-    - name: Create a directory Vector
-      ansible.builtin.file: path=/vector state=directory mode=0755
-    - name: Download Vector
-      ansible.builtin.get_url:
-        url: "https://packages.timber.io/vector/0.21.0/vector-0.21.0-1.x86_64.rpm"
-        dest: "./vector/vector-0.21.0-1.x86_64.rpm"
-        mode: 0664
-        timeout: 200
-    - name: Install Vector
-      become: true
-      become_method: su
-      become_exe: sudo su -
-      ansible.builtin.yum:
-        disable_gpg_check: true
-        name: "./vector/vector-0.21.0-1.x86_64.rpm"
-```
-Если убираю параметр become_exe: sudo su - то тогда ошибка с привилегиями:
-![img_1.png](img_1.png)
 ## Основная часть
 
 1. Допишите playbook: нужно сделать ещё один play, который устанавливает и настраивает lighthouse.

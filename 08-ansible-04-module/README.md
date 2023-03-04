@@ -6,8 +6,8 @@
 ![img_3.png](img_3.png) 
 
 
-https://github.com/EvgeniyaAvdeeva/clickhouse-role
-https://github.com/EvgeniyaAvdeeva/vector-role
-https://github.com/EvgeniyaAvdeeva/lighthouse-role
+* https://github.com/EvgeniyaAvdeeva/clickhouse-role
+* https://github.com/EvgeniyaAvdeeva/vector-role
+* https://github.com/EvgeniyaAvdeeva/lighthouse-role
 
 ---
